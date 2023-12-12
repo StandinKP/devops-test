@@ -18,8 +18,16 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
+          api_host: 'https://kaushal.ogtech.in'
           script: |
             cd ~/apps/devops-test
             git pull
             docker compose down
             docker compose up -d
+            cd fe-js
+            rm .env
+            touch .env
+            echo VITE_FLASK_URL = "$api_host/flask" > .env
+            echo VITE_NODE_URL = "$api_host/node" >> .env
+            echo VITE_GO_URL = "$api_host/go" >> .env
+            ./deploy_local.sh -p ${{ secrets.PASSWORD }}
