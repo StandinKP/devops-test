@@ -2,7 +2,7 @@ name: Deploy to Server
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   deploy:
@@ -11,13 +11,15 @@ jobs:
     environment: production
 
     steps:
-    - name: Deploy everything
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: |
-          cd ~/apps/devops-test
-          git pull
+      - name: Deploy everything
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/apps/devops-test
+            git pull
+            docker compose down
+            docker compose up -d
