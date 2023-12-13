@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 app.get('/node/hello', (req, res) => {
-  res.send('Hello from Node!');
+  res.send('Hello from Node docker api!');
 });
 
 const port = process.env.PORT || 8001;

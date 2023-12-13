@@ -7,7 +7,7 @@ CORS(app, supports_credentials=True)
 
 @app.route("/flask/hello")
 def hello():
-    return "Hello from Flask!"
+    return "Hello from Flask docker api!"
 
 
 if __name__ == "__main__":

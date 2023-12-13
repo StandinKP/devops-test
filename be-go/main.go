@@ -22,7 +22,7 @@ func setupRouter() *gin.Engine {
 
 	// Ping test
 	r.GET("/go/hello", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello from Go API!")
+		c.String(http.StatusOK, "Hello from Go docker API!")
 	})
 
 	return r
