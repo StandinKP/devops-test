@@ -3,7 +3,7 @@ services:
     build:
       context: beflask
     ports:
-      - 8000:8000
+      - 8003:8003
 
   node:
     build:
